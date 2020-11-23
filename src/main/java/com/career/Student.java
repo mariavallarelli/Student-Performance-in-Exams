@@ -195,7 +195,6 @@ public class Student {
 		topStudentsAvgExamMarks.entrySet().stream()
 		.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 		.limit(10)
-		//.forEach(s -> System.out.println(s.getKey() + ',' + Math.round(s.getValue()*100.0)/100.0));
 		.forEach(s -> elenco2.add(s.getKey() + ',' + Math.round(s.getValue()*100.0)/100.0 + "\n"));
 		try {
 			writeFile(file2, elenco2, header2, "No student enrolled more than 3 years");
@@ -220,7 +219,6 @@ public class Student {
 			.filter(distinctByKeys(Exam::getStudent_code, Exam::getStudent_name))
             .map(e -> studentList.add(new Student(e.getStudent_code(), e.getStudent_name(), s.getEnrollment_year())))
             .collect(Collectors.toList()));
-		//studentList.stream().forEach(s -> System.out.println(s.getStudent_code() + "," + s.getStudent_name() + "," + s.getEnrollment_year()));
 		studentList.stream().forEach(s -> elenco1.add(s.getStudent_code() + "," + s.getStudent_name() + "," + s.getEnrollment_year()+"\n"));
 		try {
 			writeFile(file1, elenco1, header1, "No Student has passed almost 3 exams");
